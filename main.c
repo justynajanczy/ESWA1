@@ -16,5 +16,7 @@ int main()
 	printf("pull method result: %d\n", linked_list_pull_item(myList));
 	linked_list_print_elements(myList);
 
-	printf("%d\n", linked_list_peekItemByIndex(myList, 1));
+	//printf("%s\n", linked_list_remove_item(myList, 2));
+	//linked_list_print_elements(myList);
+
 }

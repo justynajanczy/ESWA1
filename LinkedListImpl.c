@@ -117,6 +117,41 @@ void* linked_list_peekItemByIndex(linkedlist_t self, uint16_t index)
 	return node->item;
 }
 
+list_returnCode_t linked_list_remove_item(linkedlist_t self, void* item)
+{
+	list_node_t next = self->head;
+	list_node_t to_remove = self->head;
+	list_node_t prev = self->head;
+
+	uint16_t if_exists = 0;
+
+	while (next->next != NULL)
+	{
+		if (next->next->item == item)
+		{
+			if_exists = 1;
+			to_remove = next->next;
+			prev = next;
+		}
+		next = next->next;
+	}
+
+	if (if_exists == 1)
+	{
+		if (to_remove->next != NULL)
+		{
+			prev->next = to_remove->next;
+		}
+		free(to_remove);
+		return LINKED_LIST_OK;
+	}
+	else
+	{
+		return LINKED_LIST_NOT_FOUND;
+	}
+
+}
+
 
 
 void linked_list_print_elements(linkedlist_t self)
